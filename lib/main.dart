@@ -1,10 +1,17 @@
+import 'package:basic_bloc/src/bloc/app_bloc_observer.dart';
 import 'package:basic_bloc/src/bloc/counter_a_bloc/counter_a_bloc.dart';
 import 'package:basic_bloc/src/page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  BlocOverrides.runZoned(
+        () {
+      runApp(MyApp());
+    },
+    blocObserver: AppBlocObserver(),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -9,6 +9,11 @@ class CounterAState extends Equatable {
   }
 
   @override
+  String toString() {
+    return "Count: $count";
+  }
+
+  @override
   List<Object> get props => [count];
 }
 
