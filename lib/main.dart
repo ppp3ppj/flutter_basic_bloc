@@ -1,3 +1,4 @@
+import 'package:basic_bloc/src/app_route.dart';
 import 'package:basic_bloc/src/bloc/app_bloc_observer.dart';
 import 'package:basic_bloc/src/bloc/counter_a_bloc/counter_a_bloc.dart';
 import 'package:basic_bloc/src/page/home_page.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       providers: [counterABloc],
       child: MaterialApp(
         title: 'Flutter Demo',
+        routes: AppRoute().getAll,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
