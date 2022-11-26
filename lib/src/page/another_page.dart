@@ -1,4 +1,5 @@
 import 'package:basic_bloc/src/bloc/counter_a_bloc/counter_a_bloc.dart';
+import 'package:basic_bloc/src/bloc/counter_b_bloc/counter_b_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,37 +22,80 @@ class _AnotherPageState extends State<AnotherPage> {
         title: Text(widget.title),
       ),
       body: BlocBuilder<CounterABloc, CounterAState>(
-  builder: (context, state) {
+  builder: (context, counterAState) {
+    return BlocBuilder<CounterBBloc, CounterBState>(
+  builder: (context, counterBState) {
     return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Counter A',
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Counter A',
+                ),
+                    Text(
+                      // '${state.count}',
+                      '${counterAState.count}',
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              ],
             ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Counter B',
+                ),
                 Text(
                   // '${state.count}',
-                  '${state.count}',
-              style: Theme.of(context).textTheme.headline4,
+                  '${counterBState.count}',
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              ],
             ),
           ],
         ),
       );
   },
+);
+  },
 ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          FloatingActionButton(
-            onPressed: () => context.read<CounterABloc>().add(CounterAEventReset()),
-            tooltip: 'Reset',
-            child: const Icon(Icons.restore),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              FloatingActionButton(
+                onPressed: () => context.read<CounterABloc>().add(CounterAEventReset()),
+                tooltip: 'Reset',
+                child: const Icon(Icons.restore),
+              ),
+              const SizedBox(height: 10,),
+              FloatingActionButton(
+                onPressed: () => context.read<CounterABloc>().add(CounterAEventAdd()),
+                tooltip: 'Increment',
+                child: const Icon(Icons.add),
+              ),
+            ],
           ),
-          const SizedBox(height: 10,),
-          FloatingActionButton(
-            onPressed: () => context.read<CounterABloc>().add(CounterAEventAdd()),
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              FloatingActionButton(
+                onPressed: () => context.read<CounterBBloc>().add(CounterBEventReset()),
+                tooltip: 'Reset',
+                child: const Icon(Icons.restore),
+              ),
+              const SizedBox(height: 10,),
+              FloatingActionButton(
+                onPressed: () => context.read<CounterBBloc>().add(CounterBEventAdd()),
+                tooltip: 'Increment',
+                child: const Icon(Icons.add),
+              ),
+            ],
           ),
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
