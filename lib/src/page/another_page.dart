@@ -69,12 +69,14 @@ class _AnotherPageState extends State<AnotherPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               FloatingActionButton(
+                heroTag: "A-Restore",
                 onPressed: () => context.read<CounterABloc>().add(CounterAEventReset()),
                 tooltip: 'Reset',
                 child: const Icon(Icons.restore),
               ),
               const SizedBox(height: 10,),
               FloatingActionButton(
+                heroTag: "A-Add",
                 onPressed: () => context.read<CounterABloc>().add(CounterAEventAdd()),
                 tooltip: 'Increment',
                 child: const Icon(Icons.add),
@@ -85,12 +87,14 @@ class _AnotherPageState extends State<AnotherPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               FloatingActionButton(
+                heroTag: "B-Restore",
                 onPressed: () => context.read<CounterBBloc>().add(CounterBEventReset()),
                 tooltip: 'Reset',
                 child: const Icon(Icons.restore),
               ),
               const SizedBox(height: 10,),
               FloatingActionButton(
+                heroTag: "B-Add",
                 onPressed: () => context.read<CounterBBloc>().add(CounterBEventAdd()),
                 tooltip: 'Increment',
                 child: const Icon(Icons.add),
