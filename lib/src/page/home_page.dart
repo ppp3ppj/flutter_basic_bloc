@@ -1,3 +1,4 @@
+import 'package:basic_bloc/src/app_route.dart';
 import 'package:basic_bloc/src/bloc/counter_a_bloc/counter_a_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,6 +19,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [IconButton(onPressed: () => Navigator.pushNamed(context, AppRoute.another), icon: Icon(Icons.skip_next))],
         title: Text(widget.title),
       ),
       body: BlocBuilder<CounterABloc, CounterAState>(
