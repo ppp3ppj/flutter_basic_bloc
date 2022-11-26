@@ -14,7 +14,7 @@ class CounterABloc extends Bloc<CounterAEvent, CounterAState> {
        emit(state.copyWith(count: state.count + 1));
     });
     // Reset Event
-    on<CounterAEventAdd>((event, emit) {
+    on<CounterAEventReset>((event, emit) {
       emit(state.copyWith(count: 0));
     });
   }
